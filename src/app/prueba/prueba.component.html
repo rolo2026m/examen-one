@@ -1,0 +1,24 @@
+<div class="tasks-container">
+  <form
+    [formGroup]="taskForm"
+    (ngSubmit)="editingTaskId ? updateTask() : addTask()"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Añadir Lenguaje de Programacion</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <button mat-button type="submit">
+      <!--  <p>Nombre del Lenguaje Debe Ser Uncio</p> -->
+      {{ editingTaskId ? "" : "" }} Enviar
+    </button>
+    <h1>Lenguajes de Programacion</h1>
+  </form>
+
+  <div *ngFor="let task of tasks">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <button mat-button (click)="editTask(task)">Votar</button>
+    <button mat-button (click)="editTask(task)">Editar</button>
+    <button mat-button (click)="deleteTask(task.id)">Eliminar</button>
+  </div>
+</div>
